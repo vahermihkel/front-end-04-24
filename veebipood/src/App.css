@@ -33,3 +33,19 @@
   background-color: brown;
   text-decoration: underline;
 }
+
+.summa {
+  background-color:beige;
+  font-size: 30px;
+  margin: 10px;
+  border-radius: 5px;
+}
+
+.aktiivne-summa {
+  background-color:beige;
+  font-size: 30px;
+  margin: 10px;
+  border-radius: 5px;
+  border: 2px solid purple;
+  color: purple;
+}

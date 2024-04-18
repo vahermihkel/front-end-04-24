@@ -7,6 +7,8 @@ import Ariklient from './pages/Ariklient';
 import Kinkekaart from './pages/Kinkekaart';
 import Ostukorv from './pages/Ostukorv';
 import Seaded from './pages/Seaded';
+import LisaToode from './pages/LisaToode';
+import NotFound from './pages/NotFound';
 
 function App() {
   return (
@@ -32,8 +34,12 @@ function App() {
         <button className="nupp">Ostukorv</button>
       </Link>
 
-      <Link to="Seaded">
+      <Link to="seaded">
         <button className="nupp">Seaded</button>
+      </Link>
+
+      <Link to="lisa-toode">
+        <button className="nupp">Lisa toode</button>
       </Link>
 
       <Routes>
@@ -43,6 +49,8 @@ function App() {
         <Route path="osta-kinkekaart" element={ <Kinkekaart /> }></Route>
         <Route path="ostukorv" element={ <Ostukorv /> }></Route>
         <Route path="seaded" element={ <Seaded /> }></Route>
+        <Route path="lisa-toode" element={ <LisaToode /> }></Route>
+        <Route path="*" element={ <NotFound /> }></Route>
       </Routes>
     </div>
   );

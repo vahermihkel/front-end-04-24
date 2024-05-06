@@ -10,6 +10,9 @@ import Seaded from './pages/Seaded';
 import LisaToode from './pages/LisaToode';
 import NotFound from './pages/NotFound';
 import Menyy from './components/Menyy';
+import Hinnad from './pages/Hinnad';
+import Tootajad from './pages/Tootajad';
+import Tooted from './pages/Tooted';
 
 function App() {
   return (
@@ -26,6 +29,9 @@ function App() {
         <Route path="ostukorv" element={ <Ostukorv /> }></Route>
         <Route path="seaded" element={ <Seaded /> }></Route>
         <Route path="lisa-toode" element={ <LisaToode /> }></Route>
+        <Route path="hinnad" element={ <Hinnad /> }></Route>
+        <Route path="tootajad" element={ <Tootajad /> }></Route>
+        <Route path="tooted" element={ <Tooted /> }></Route>
         <Route path="*" element={ <NotFound /> }></Route>
       </Routes>
 
@@ -34,3 +40,9 @@ function App() {
 }
 
 export default App;
+
+// 06.05 - dünaamiline CSS klass, useRef, useState
+//        early return.
+//        arrays
+// 09.05  localStorage, arrays jätk
+// 13.05  arrays

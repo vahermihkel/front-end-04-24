@@ -8,6 +8,7 @@ function Esindused() {
   // kõik mis on inglise keeles on süsteemi poolt antud
   //   muutuja   muutja
   const [linn, muudaLinn] = useState("Tallinn");
+  const [keskused, muudaKeskused] = useState(["Ülemiste", "Rocca al Mare", "Magistrali", "Vesse", "Kristiine", "Järveotsa"]);
 
   return (
     <div>
@@ -19,12 +20,13 @@ function Esindused() {
 
       {linn==="Tallinn" &&
       <div>
-        <div>Ülemiste</div>
+        {keskused.map(k => <div>{k}</div>)}
+        {/* <div>Ülemiste</div>
         <div>Rocca al Mare</div>
         <div>Magistrali</div>
         <div>Vesse</div>
         <div>Kristiine</div>
-        <div>Järveotsa</div>
+        <div>Järveotsa</div> */}
       </div>}
       
       {linn==="Tartu" &&

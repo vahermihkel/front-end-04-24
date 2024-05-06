@@ -31,6 +31,18 @@ function Menyy() {
       <Link to="/lisa-toode">
         <button className="nupp">Lisa toode</button>
       </Link>
+
+      <Link to="/hinnad">
+        <button className="nupp">Hinnad</button>
+      </Link>
+
+      <Link to="/tootajad">
+        <button className="nupp">Töötajad</button>
+      </Link>
+
+      <Link to="/tooted">
+        <button className="nupp">Tooted</button>
+      </Link>
     </div>
   )
 }

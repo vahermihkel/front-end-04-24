@@ -1,5 +1,6 @@
 import React from 'react'; // node_module kaustast
 import ReactDOM from 'react-dom/client';
+import 'react-toastify/dist/ReactToastify.css';
 import './index.css'; // tegemist on src kausta failiga
 import App from './App'; // tegemist on src kausta failiga
 //import reportWebVitals from './reportWebVitals';

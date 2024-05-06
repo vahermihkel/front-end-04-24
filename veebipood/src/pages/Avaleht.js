@@ -63,7 +63,9 @@ kui enne oli false, siis nüüd on true ja vastupidi
       <div>{sonum}</div>
       {kogus !== 0 && <button onClick={nulli}>Tagasi nulli</button>}
       <button disabled={kogus === 0} onClick={vahenda}>-</button>
-      <span>{kogus}</span>
+      {/*  kui kogus on suurem või võrdne kui 10 */}
+                                    {/* true    false */}
+      <span className={kogus >= 10 ? "kuldne" : null}>{kogus}</span>
       <button onClick={suurenda}>+</button>
     </div>
   )

@@ -1,0 +1,9 @@
+[
+  {"nimi": "Nobe", "hind": 25000, "aktiivne": true, "pilt": "https://www.leichtbauwelt.de/wp-content/uploads/2019/08/DSF8469-Edit-4.png"}, 
+  {"nimi": "Tesla", "hind": 85000, "aktiivne": false, "pilt": "https://cdn.motor1.com/images/mgl/Mk3qg6/s3/2017-tesla-roadster-deck-model-petersen-automotive-museum.jpg"}, 
+  {"nimi": "BMW", "hind": 55000, "aktiivne": true, "pilt": "https://www.bmw-m.com/content/dam/bmw/marketBMW_M/www_bmw-m_com/all-models/model-navigation/bmw-m850i-xdrive-cabrio-flyout-neu.png"},
+  {"nimi": "Toyota", "hind": 45000, "aktiivne": true, "pilt": "https://www.toyota.com/config/pub/3d/toyota/1007736/1006275/Exterior/2/864_477_PNG/3d418b8-774f175-51d353f-c8c7ac5-1b1bfc4-f2cc576-cf0ba45-21ce168-6024785-d9076f1-958359b-95f71a6-480e600.png"},
+  {"nimi": "Bentley", "hind": 105000, "aktiivne": true, "pilt": "https://basel.bentleymotors.com/picserver1/userdata/1/31595/3FAdVwEMPE/dws_config_34_continentalgts_cambrian_grey_850x479_24.png"},
+  {"nimi": "Nissan", "hind": 35000, "aktiivne": true, "pilt": "https://di-uploads-development.dealerinspire.com/fiestanissan/uploads/2020/01/2020_Altima_Big.png"}
+
+]

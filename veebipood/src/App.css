@@ -2,6 +2,14 @@
   text-align: center;
 }
 
+.App-dark {
+  text-align: center;
+  background-color: black;
+  color: white;
+  min-height: 100vh;
+  /* vh --> protsentides vaate kõrgus (view height) */
+}
+
 .pilt {
   height: 100px;
   /* width: 100px; */

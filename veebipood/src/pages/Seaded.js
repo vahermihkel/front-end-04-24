@@ -1,14 +1,14 @@
 import React, { useRef, useState } from 'react'
 import { ToastContainer, toast } from 'react-toastify';
 
-function Seaded() {
-  const [keel, muudaKeel] = useState("est");
+function Seaded() {       // pean võtma localStorage-st
+  const [keel, muudaKeel] = useState(localStorage.getItem("keel") || "est");
   const aadressRef = useRef();
-  const [aadress, muudaAadress] = useState();
+  const [aadress, muudaAadress] = useState(localStorage.getItem("aadress"));
   const emailRef = useRef();
-  const [email, muudaEmail] = useState();
+  const [email, muudaEmail] = useState(localStorage.getItem("email"));
   const telefonRef = useRef();
-  const [telefon, muudaTelefon] = useState();
+  const [telefon, muudaTelefon] = useState(localStorage.getItem("telefon"));
 
   // const sisestaAadress = () => {}
   function sisestaAadress() {
@@ -22,6 +22,7 @@ function Seaded() {
     }
     toast.success("Edukalt sisestatud!");
     muudaAadress(aadressRef.current.value);
+    localStorage.setItem("aadress", aadressRef.current.value);
   }
 
   function sisestaEmail() {
@@ -35,6 +36,7 @@ function Seaded() {
     }
     toast.success("Edukalt sisestatud!");
     muudaEmail(emailRef.current.value);
+    localStorage.setItem("email", emailRef.current.value);
   }
 
   function sisestaTelefon() {
@@ -52,13 +54,29 @@ function Seaded() {
     }
     toast.success("Edukalt sisestatud!");
     muudaTelefon(telefonRef.current.value);
+    localStorage.setItem("telefon", telefonRef.current.value);
+ }
+
+  function muudaKeelEst() {
+    muudaKeel("est");
+    localStorage.setItem("keel", "est"); // localStorage-sse salvestamine
+  }
+
+  function muudaKeelEng() {
+    muudaKeel("eng");
+    localStorage.setItem("keel", "eng"); // localStorage-sse salvestamine
+  }
+
+  function muudaKeelRus() {
+    muudaKeel("rus");
+    localStorage.setItem("keel", "rus"); // localStorage-sse salvestamine
   }
 
   return (
     <div>
-      <button onClick={() => muudaKeel("est")}>Eesti keelseks</button>
-      <button onClick={() => muudaKeel("eng")}>To English</button>
-      <button onClick={() => muudaKeel("rus")}>Pycckij</button>
+      <button onClick={muudaKeelEst}>Eesti keelseks</button>
+      <button onClick={muudaKeelEng}>To English</button>
+      <button onClick={muudaKeelRus}>Pycckij</button>
       <div>Aktiivne keel: {keel}</div>
       {keel === "est" && <div>Leht on hetkel eesti keelne</div>}
       {keel === "eng" && <div>Page is in English</div>}

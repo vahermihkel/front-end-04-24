@@ -16,7 +16,7 @@ import React, { useState } from 'react'
 function Avaleht() {
   const [laigitud, muudaLaigitud] = useState(true); // kahendväärtus e boolean. saan tagurpidi keerata
   // sisselogimine, registreerumine, makstud, täisealine, ostukorvis, aktiivne, laos
-  const [kogus, muudaKogus] = useState(0); // number. saan kokku liita. korrutamine/jagamine/lahutamine. 
+  const [kogus, muudaKogus] = useState(Number(localStorage.getItem("kogus")) || 0); // number. saan kokku liita. korrutamine/jagamine/lahutamine. 
   //suurem/väiksem. ostukorvi kogusumma, emailide/teavituste kogusumma, toodete koguarv, filtris olev arv 
   const [sonum, muudaSonum] = useState("Muuda kogust!"); // sõna e string. isikukood, postiindeks, telnr
   //võtta esimene täht, mitu tähemärki, vt kas sisaldab sellist lühendit, suurteks tähtedeks
@@ -24,16 +24,19 @@ function Avaleht() {
   function nulli() {
     muudaKogus(0);
     muudaSonum("Kogus nullitud!");
+    localStorage.setItem("kogus", 0);
   }
 
   function vahenda() {
     muudaKogus(kogus - 1);
     muudaSonum("Kogus vähendatud!");
+    localStorage.setItem("kogus", kogus - 1);
   }
 
   function suurenda() {
     muudaKogus(kogus + 1);
     muudaSonum("Kogus suurendatud!");
+    localStorage.setItem("kogus", kogus + 1);
   }
 
   return (

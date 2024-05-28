@@ -1,23 +1,23 @@
 import React, { useState } from 'react'
-import productsJSON from "../../data/products.json"
+import cartJSON from "../../data/cart.json"
 import { Link } from 'react-router-dom';
 
 function Cart() {
-  const [products, setProducts] = useState(productsJSON.slice());
+  const [products, setProducts] = useState(cartJSON.slice());
 
   function del(product) {
-    productsJSON.splice(product, 1);
-    setProducts(productsJSON.slice());
+    cartJSON.splice(product, 1);
+    setProducts(cartJSON.slice());
   }
 
   function add(product) {
-    productsJSON.push(product);
-    setProducts(productsJSON.slice())
+    cartJSON.push(product);
+    setProducts(cartJSON.slice())
   }
 
   function empty(){
-    productsJSON.splice(0, 100)
-    setProducts(productsJSON.slice(0))
+    cartJSON.splice(0)
+    setProducts(cartJSON.slice(0))
   }
 
   function addUp(){
@@ -27,7 +27,7 @@ function Cart() {
   }
   
   const reset = () => {
-    setProducts(productsJSON.slice())
+    setProducts(cartJSON.slice())
   }
 
   return (

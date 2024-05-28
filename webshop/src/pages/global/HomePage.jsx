@@ -1,6 +1,6 @@
 import React from 'react'
 import productsJSON from "../../data/products.json"
-// import cartJSON from "../../data/cart.json"
+import cartJSON from "../../data/cart.json"
 import { useState } from 'react';
 
 function HomePage() {
@@ -15,6 +15,10 @@ function HomePage() {
     setProducts(products.slice());
   } 
 
+  const toCart = (product) => {
+    cartJSON.push(product);
+  }
+
   return (
     <div>
       <br /><br />
@@ -26,7 +30,7 @@ function HomePage() {
           <img style={{width: "100px"}} src={product.imgage} alt=""></img>
           <div>{product.title}</div>
           <div>{product.price}</div>
-          {/* <button onClick={() => toCart(product)}>Add to cart</button> */}
+          <button onClick={() => toCart(product)}>Add to cart</button>
         </div>
       )} 
     </div>

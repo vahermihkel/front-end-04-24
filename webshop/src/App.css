@@ -2,4 +2,33 @@
   text-align: center;
 }
 
+.map {
+  height: 300px;
+  margin: 3%;
+  border-radius: 10px;
+}
 
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.product {
+  border: 1px solid lightgray;
+  padding: 10px;
+}
+
+.product:hover .picture {
+  transform: scale(1.1);
+  transition: 1.5s;
+}
+
+.picture {
+  width: 100px;
+  height: 100px;
+  transition: 1.5s;
+}
+
+.title {
+  height: 50px;
+}

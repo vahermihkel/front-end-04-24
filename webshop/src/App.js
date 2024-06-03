@@ -47,3 +47,8 @@ function App() {
 export default App;
 
 // N 30.05 -> 3/4s keel siin projektis. uudised projektile Bootstrap+tõlge
+// 4ak/h
+// 15.45-18.00   3x45min
+// 03.06 E 17.30-20.45
+// 04.06 T 17.30-20.45
+// 06.06 N 17.30-20.45

@@ -1,0 +1,27 @@
+.product {
+  display: flex;
+  justify-content: space-between;
+  /* margin: 10%; kõigis 4-s suunas
+  margin-left: 10%; ainult vasakule
+  margin-right: 10% ainult paremale */
+  margin: 0 10%;
+  border-bottom: 1px solid lightgray;
+  padding: 10px 0;
+}
+
+.picture {
+  height: 100px;
+  width: 100px;
+}
+
+.title {
+  width: 150px;
+}
+
+.price {
+  width: 60px;
+}
+
+.button {
+
+}

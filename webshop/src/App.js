@@ -15,6 +15,8 @@ import EditProduct from './pages/admin/EditProduct';
 import MaintainProducts from './pages/admin/MaintainProducts';
 import EditCategories from './pages/admin/EditCategories';
 import MaintainShops from './pages/admin/MaintainShops';
+import Supplier from './pages/admin/Supplier';
+import BookSupplier from './pages/admin/BookSupplier';
 
 function App() {
   return (
@@ -25,14 +27,16 @@ function App() {
           <Route path='contact' element={<ContactUs/>}></Route>
           <Route path='shops' element={<Shops/>}></Route>
           <Route path='cart' element={<Cart/>}></Route>
-          <Route path='product/:index' element={<SingleProduct/>}></Route>
+          <Route path='product/:id' element={<SingleProduct/>}></Route>
 
           <Route path='admin' element={<AdminHome/>}></Route>
           <Route path='admin/add-product' element={<AddProduct/>}></Route>
-          <Route path='admin/edit-product/:index' element={<EditProduct/>}></Route>
+          <Route path='admin/edit-product/:id' element={<EditProduct/>}></Route>
           <Route path='admin/maintain-products' element={<MaintainProducts/>}></Route>
           <Route path='admin/maintain-categories' element={<EditCategories/>}></Route>
           <Route path='admin/maintain-shops' element={<MaintainShops/>}></Route>
+          <Route path='admin/supplier' element={<Supplier/>}></Route>
+          <Route path='admin/book-supplier' element={<BookSupplier/>}></Route>
 
           <Route path='login' element={<Login/>}></Route>
           <Route path='signup' element={<Signup/>}></Route>
@@ -49,6 +53,10 @@ export default App;
 // N 30.05 -> 3/4s keel siin projektis. uudised projektile Bootstrap+tõlge
 // 4ak/h
 // 15.45-18.00   3x45min
-// 03.06 E 17.30-20.45
-// 04.06 T 17.30-20.45
-// 06.06 N 17.30-20.45
+// 13. 03.06 E 17.30-20.45
+// 14. 06.06 N 17.30-20.45
+// 15. 10.06 E 17.30-20.45
+// 16. 13.06 N 13.00-16.15
+// 17. 17.06 E 17.30-20.45
+// 18a. 27.06 N ---> 45min 17.30-18.15
+// 18. 04.07 N ---> 2ak/h  1.5h  17.30-19.00

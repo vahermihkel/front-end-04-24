@@ -1,5 +1,5 @@
-import React from 'react'
-import productsJSON from "../../data/products.json"
+import React, { useEffect } from 'react'
+//import productsJSON from "../../data/products.json"
 //import cartJSON from "../../data/cart.json"
 import { useState } from 'react';
 import { Button } from '@mui/material';
@@ -15,10 +15,31 @@ import { Link } from 'react-router-dom';
 // 3. faili -> kirjutab ka
 
 function HomePage() {
-  const [products, setProducts] = useState (productsJSON.slice());
+  const [products, setProducts] = useState([]); // muutuv seisund -> HTMLs
+  const [dbProducts, setDbProducts] = useState([]); 
+  // andmebaasi seis -> ei muuda, et saaks resetida
+  // setDbProducts rohkem ei tee kui andmebaasist võttes
+  const url = "https://react-mihkel-webshop-04-24-default-rtdb.europe-west1.firebasedatabase.app/categories.json";
+  const [categories, setCategories] = useState([]);
+  const urlProducts = "https://react-mihkel-webshop-04-24-default-rtdb.europe-west1.firebasedatabase.app/products.json"
+
+  useEffect(() => {
+    fetch(urlProducts)
+      .then(res => res.json())
+      .then(json => {
+        setProducts(json || []);
+        setDbProducts(json || []);
+      });
+  }, []);
+
+  useEffect(() => {
+    fetch(url)
+      .then(res => res.json())
+      .then(json => setCategories(json || []));
+  }, []);
 
   const reset = () => {
-    setProducts(productsJSON.slice())
+    setProducts(dbProducts.slice())
   }
 
   const sortAZ = ()  => { 
@@ -47,23 +68,28 @@ function HomePage() {
   // 4. panna jutumärgid tagasi (JSON.stringify())
   // 5. panna localStorage-sse tagasi (localStorage.setItem("VÕTI", "UUS"))
 
-  const filterMensClothing = () => {
-    const result = productsJSON.filter(product => product.category === "men's clothing");
-    setProducts(result);
-  }
+  // const filterMensClothing = () => {
+  //   const result = productsJSON.filter(product => product.category === "men's clothing");
+  //   setProducts(result);
+  // }
 
-  const filterJewelery = () => {
-    const result = productsJSON.filter(product => product.category === "jewelery");
-    setProducts(result);
-  }
+  // const filterJewelery = () => {
+  //   const result = productsJSON.filter(product => product.category === "jewelery");
+  //   setProducts(result);
+  // }
 
-  const filterElectronics = () => {
-    const result = productsJSON.filter(product => product.category === "electronics");
-    setProducts(result);
-  }
+  // const filterElectronics = () => {
+  //   const result = productsJSON.filter(product => product.category === "electronics");
+  //   setProducts(result);
+  // }
 
-  const filterWomensClothing = () => {
-    const result = productsJSON.filter(product => product.category === "women's clothing");
+  // const filterWomensClothing = () => {
+  //   const result = productsJSON.filter(product => product.category === "women's clothing");
+  //   setProducts(result);
+  // }
+
+  const filterByCategory = (categoryClicked) => {
+    const result = dbProducts.filter(product => product.category === categoryClicked);
     setProducts(result);
   }
 
@@ -74,11 +100,14 @@ function HomePage() {
       <Button onClick={reset} variant="contained">Tooted reset</Button>
       <Button onClick={sortAZ} variant="outlined">Tooded A-Z</Button>
       <br /><br />
-      <Button onClick={filterMensClothing}>men's clothing</Button>
-      <Button onClick={filterJewelery}>jewelery</Button>
-      <Button onClick={filterElectronics}>electronics</Button>
-      <Button onClick={filterWomensClothing}>women's clothing</Button>
-      
+      {/* <Button onClick={filterMensClothing}>men's clothing</Button>
+      <Button onClick={() => filterByCategory("jewelery")}>jewelery</Button>
+      <Button onClick={() => filterByCategory("electronics")}>electronics</Button>
+      <Button onClick={filterWomensClothing}>women's clothing</Button> */}
+      <div>
+        {categories.map(category => <Button onClick={() => filterByCategory(category.name)}>{category.name}</Button>)}
+      </div>
+
       <div className={styles.products}>
         {products.map((product, index) => 
           <div key={product.id} className={styles.product}>

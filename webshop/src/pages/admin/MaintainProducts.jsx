@@ -1,18 +1,26 @@
-import React, { useState } from 'react';
-import productsJSON from "../../data/products.json"
+import React, { useEffect, useState } from 'react';
+//import productsJSON from "../../data/products.json"
 import {Link} from 'react-router-dom'
  
 function MaintainProducts() {
-  const [products, changeProducts] = useState(productsJSON.slice());
- 
+  const [products, changeProducts] = useState([]);
+  const url = "https://react-mihkel-webshop-04-24-default-rtdb.europe-west1.firebasedatabase.app/products.json"
+
+  useEffect(() => {
+    fetch(url)
+      .then(res => res.json())
+      .then(json => changeProducts(json || []));
+  }, []);
+
   const sortAZ = ()  => { 
     products.sort();
     changeProducts(products.slice());
   } 
 
   const deleteProduct = (index) => {
-    productsJSON.splice(index, 1);
-    changeProducts(productsJSON.slice());
+    products.splice(index, 1);
+    fetch(url, {"method": "PUT", "body": JSON.stringify(products)});
+    changeProducts(products.slice());
   }
  
   // function duplicate(product) {

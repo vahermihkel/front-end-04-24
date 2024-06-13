@@ -14,7 +14,7 @@ function Supplier() {
       <div>
         {products.map(product => 
           <div key={product.id}>
-            <img src={product.image} alt=""></img>
+            <img style={{width: "100px"}} src={product.image} alt=""></img>
             <div>{product.title.length > 50 ? product.title.substring(0,50) + "..." : product.title }</div>
             <div>{product.price}</div>
           </div>

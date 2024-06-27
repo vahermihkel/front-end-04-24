@@ -1,10 +1,13 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 //import productsJSON from "../../data/products.json"
 //import cartJSON from "../../data/cart.json"
 import { useState } from 'react';
 import { Button } from '@mui/material';
 import styles from "../../css/HomePage.module.css";
 import { Link } from 'react-router-dom';
+import { Nav } from 'react-bootstrap';
+import SortButtons from '../../components/SortButtons';
+import FilterProducts from '../../components/OffCanvas';
 // from "react" --> võtab node_module-st React kaustast
 // from "@mui/material" --> võtab node_module-st @mui kaustast, mille sees on material kaust
 // from "../" --> läheb kausta võrra ülespoole
@@ -14,7 +17,49 @@ import { Link } from 'react-router-dom';
 // 2. andmebaas
 // 3. faili -> kirjutab ka
 
+let mybutton = document.getElementById("myBtn");
+
+
 function HomePage() {
+  const MyHomepageRef = useRef(null);
+  const MyAboutRef = useRef(null);
+  const MyPortfolioRef = useRef(null);
+  // const MyContactRef = useRef(null);
+
+  const scrollToSectionMyHomepage = () =>
+    MyHomepageRef.current.scrollIntoView({ behavior: "smooth" });
+  const scrollToSectionMyAbout = () =>
+    MyAboutRef.current.scrollIntoView({ behavior: "smooth" });
+  const scrollToSectionMyPortfol = () =>
+    MyPortfolioRef.current.scrollIntoView({ behavior: "smooth" });
+  // const scrollToSectionMyContact = () =>
+  //   MyContactRef.current.scrollIntoView({ behavior: "smooth" });
+
+
+  // Get the button:
+
+  // When the user scrolls down 20px from the top of the document, show the button
+  window.onscroll = function () {
+    scrollFunction();
+  };
+
+  function scrollFunction() {
+    if (
+      document.body.scrollTop > 20 ||
+      document.documentElement.scrollTop > 20
+    ) {
+      mybutton.style.display = "block";
+    } else {
+      mybutton.style.display = "none";
+    }
+  }
+
+  // When the user clicks on the button, scroll to the top of the document
+  function topFunction() {
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+  }
+
   const [products, setProducts] = useState([]); // muutuv seisund -> HTMLs
   const [dbProducts, setDbProducts] = useState([]); 
   // andmebaasi seis -> ei muuda, et saaks resetida
@@ -37,15 +82,6 @@ function HomePage() {
       .then(res => res.json())
       .then(json => setCategories(json || []));
   }, []);
-
-  const reset = () => {
-    setProducts(dbProducts.slice())
-  }
-
-  const sortAZ = ()  => { 
-    products.sort((a, b) => a.title.localeCompare(b.title));
-    setProducts(products.slice());
-  } 
 
   const toCart = (product) => {
     const cartLS = JSON.parse(localStorage.getItem("cart")) || [];
@@ -94,19 +130,37 @@ function HomePage() {
   }
 
   return (
-    <div>
+    <div ref={MyHomepageRef}>
+
+      <FilterProducts 
+        products={products}
+        setProducts={setProducts}
+      />
+
+      <Nav>
+        <Nav id="myBtn" onClick={scrollToSectionMyHomepage}>
+          Kõige üles
+        </Nav>
+        <Nav id="navlink" onClick={scrollToSectionMyAbout}>
+          Kokku tooteid
+        </Nav>
+        <Nav id="navlink" onClick={scrollToSectionMyPortfol}>
+          Filtreeri nupud
+        </Nav>
+        {/* <Nav id="navlink" onClick={scrollToSectionMyContact}>
+          Sorteeri nupud
+        </Nav> */}
+      </Nav>
+
       <br /><br />
-      <div><b>Tooted: {products.length} tk</b></div>
-      <Button onClick={reset} variant="contained">Tooted reset</Button>
-      <Button onClick={sortAZ} variant="outlined">Tooded A-Z</Button>
+      <div ref={MyAboutRef}><b>Tooted: {products.length} tk</b></div>
+     
       <br /><br />
       {/* <Button onClick={filterMensClothing}>men's clothing</Button>
       <Button onClick={() => filterByCategory("jewelery")}>jewelery</Button>
       <Button onClick={() => filterByCategory("electronics")}>electronics</Button>
       <Button onClick={filterWomensClothing}>women's clothing</Button> */}
-      <div>
-        {categories.map(category => <Button onClick={() => filterByCategory(category.name)}>{category.name}</Button>)}
-      </div>
+      
 
       <div className={styles.products}>
         {products.map((product, index) => 
@@ -122,6 +176,24 @@ function HomePage() {
         )} 
       </div>
 
+      <div ref={MyPortfolioRef}>
+        {categories.map(category => <Button onClick={() => filterByCategory(category.name)}>{category.name}</Button>)}
+      </div>
+      <br /><br /><br /><br /><br /><br /><br />
+      <br /><br /><br /><br /><br />
+      <br /><br /><br /><br /><br /><br /><br />
+      <br /><br /><br /><br /><br />
+      <br /><br /><br /><br /><br /><br /><br />
+      <br /><br /><br /><br /><br />
+      <br /><br /><br /><br /><br /><br /><br />
+      <br /><br /><br /><br /><br />
+      <br /><br /><br /><br /><br /><br /><br />
+      <br /><br /><br /><br /><br />
+      <SortButtons 
+        setProducts={setProducts}
+        products={products}
+        dbProducts={dbProducts}
+        />
     </div>
   )
 }

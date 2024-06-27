@@ -60,3 +60,12 @@ export default App;
 // 17. 17.06 E 17.30-20.45
 // 18a. 27.06 N ---> 45min 17.30-18.15
 // 18. 04.07 N ---> 2ak/h  1.5h  17.30-19.00
+
+// Lõpuprojekt:
+// * React
+// * Firebase-i üles pandud
+// * Githubi üles pandud
+
+// Youtube-s: React project
+// Udemy.com: Free React
+// ChatGPT / OpenAI --> tema käest küsida, kust leiab häid Reacti projekte

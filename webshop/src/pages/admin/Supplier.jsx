@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import Payment from '../../components/cart/Payment';
 
 function Supplier() {
   const [products, setProducts] = useState([]);
@@ -20,6 +21,8 @@ function Supplier() {
           </div>
         )} 
       </div>
+
+      <Payment sum={159.25} />
     </div>
   )
 }
